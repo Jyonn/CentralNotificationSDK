@@ -2,31 +2,17 @@ from typing import Optional
 
 import requests
 
-from CentralNotificationSDK.utils.md5 import MD5
-
 
 class Notificator:
-    class TokenType:
-        RAW = 'raw'
-        MD5 = 'md5'
-
-    def __init__(self, username, token, token_type):
-        self.host = 'https://notice.6-79.cn/'
-        self.username = username
-        self.token_type = token_type
-        self.token = self.generate_token(token)
+    def __init__(self, name, token, host=None):
+        self.host = host or 'https://notice.6-79.cn/'
+        self.name = name
+        self.token = token
 
     def set_host(self, host: str):
         self.host = host
         if not self.host.endswith('/'):
             self.host += '/'
-
-    def generate_token(self, token):
-        if self.token_type == self.TokenType.RAW:
-            return token
-        if self.token_type == self.TokenType.MD5:
-            return MD5.get(token)
-        raise ValueError('unrecognized token type')
 
     def _send(self, data: dict, channel: str):
         del data['self']
@@ -35,10 +21,10 @@ class Notificator:
             url=self.host + channel,
             json=data,
             headers=dict(
-                Auth=f'{self.username}${self.token}',
+                Auth=f'{self.name}${self.token}',
             )
         ) as resp:
-            print(resp.content)
+            # print(resp.content)
             return resp.json()
 
     def bark(

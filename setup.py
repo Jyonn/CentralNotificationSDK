@@ -5,10 +5,10 @@ this_directory = Path(__file__).parent
 
 setup(
     name='notificator',
-    version='0.1.1',
+    version='0.1.2',
     keywords=['notice', 'notificator', 'bark', 'sms', 'mail'],
     description='Central Notification',
-    long_description='send sms, bark, or mail message via notice.6-79.cn',
+    long_description='send sms, bark, or mail message',
     long_description_content_type='text/markdown',
     license='MIT Licence',
     url='https://github.com/Jyonn/CentralNotificationSDK',
