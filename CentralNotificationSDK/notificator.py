@@ -2,7 +2,7 @@ from typing import Optional
 
 import requests
 
-from utils.md5 import MD5
+from CentralNotificationSDK.utils.md5 import MD5
 
 
 class Notificator:
@@ -38,6 +38,7 @@ class Notificator:
                 Auth=f'{self.username}${self.token}',
             )
         ) as resp:
+            print(resp.content)
             return resp.json()
 
     def bark(

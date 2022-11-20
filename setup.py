@@ -5,7 +5,7 @@ this_directory = Path(__file__).parent
 
 setup(
     name='notificator',
-    version='0.1.0',
+    version='0.1.1',
     keywords=['notice', 'notificator', 'bark', 'sms', 'mail'],
     description='Central Notification',
     long_description='send sms, bark, or mail message via notice.6-79.cn',

@@ -1,4 +1,4 @@
-from notificator import Notificator
+from CentralNotificationSDK.notificator import Notificator
 
 
 __all__ = [
