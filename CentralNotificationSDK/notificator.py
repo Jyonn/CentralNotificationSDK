@@ -5,20 +5,18 @@ import requests
 
 class Notificator:
     def __init__(self, name, token, host=None):
-        self.host = host or 'https://notice.6-79.cn/'
+        self.host = host or 'https://notice.6-79.cn'
+        if self.host.endswith('/'):
+            self.host = self.host[:-1]
+
         self.name = name
         self.token = token
-
-    def set_host(self, host: str):
-        self.host = host
-        if not self.host.endswith('/'):
-            self.host += '/'
 
     def _send(self, data: dict, channel: str):
         del data['self']
 
         with requests.post(
-            url=self.host + channel,
+            url=f'{self.host}/channel/{channel}',
             json=data,
             headers=dict(
                 Auth=f'{self.name}${self.token}',
