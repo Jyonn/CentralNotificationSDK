@@ -16,7 +16,7 @@ class Notificator:
         del data['self']
 
         with requests.post(
-            url=f'{self.host}/channel/{channel}',
+            url=f'{self.host}/api/channel/{channel}',
             json=data,
             headers=dict(
                 Auth=f'{self.name}${self.token}',
